@@ -1,0 +1,16 @@
+goos: linux
+goarch: amd64
+pkg: 1bl-challange/internal/app
+cpu: 11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz
+BenchmarkExecute-16    	       1	35553521416 ns/op	23130221440 B/op	891793917 allocs/op
+BenchmarkExecute-16    	       1	34220984140 ns/op	23130038920 B/op	891793836 allocs/op
+BenchmarkExecute-16    	       1	34281216089 ns/op	23130027320 B/op	891793836 allocs/op
+BenchmarkExecute-16    	       1	34322129425 ns/op	23130102744 B/op	891793796 allocs/op
+BenchmarkExecute-16    	       1	34458731208 ns/op	23130021496 B/op	891793799 allocs/op
+BenchmarkExecute-16    	       1	34742436011 ns/op	23130009368 B/op	891793767 allocs/op
+BenchmarkExecute-16    	       1	34503230873 ns/op	23129998808 B/op	891793740 allocs/op
+BenchmarkExecute-16    	       1	34456672716 ns/op	23130002088 B/op	891793698 allocs/op
+BenchmarkExecute-16    	       1	34994874214 ns/op	23129995000 B/op	891793706 allocs/op
+BenchmarkExecute-16    	       1	34732110706 ns/op	23129997000 B/op	891793731 allocs/op
+PASS
+ok  	1bl-challange/internal/app	346.441s
