@@ -2,13 +2,21 @@ package app
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"log"
 	"os"
 	"strings"
 )
 
-func Execute(filePath string) {
+const minLineLength = 2
+
+type WeatherData struct {
+	StationName string
+	Temperature int64
+}
+
+func Execute(filePath string) error {
 	file, err := os.Open(filePath)
 	if err != nil {
 		log.Fatalf("failed to open file: %v", err)
@@ -16,6 +24,7 @@ func Execute(filePath string) {
 	defer file.Close()
 
 	reader := bufio.NewReader(file)
+	stationTemperatures := map[string][]string{}
 
 	for {
 		line, err := reader.ReadString('\n')
@@ -24,22 +33,20 @@ func Execute(filePath string) {
 		}
 
 		if err != nil {
-			log.Fatalf("failed to read line: %v", err)
-
-			break
+			return fmt.Errorf("failed to read line: %v", err)
 		}
 
 		lines := strings.Split(line, ";")
-		if len(lines) < 2 {
-			log.Fatalf("invalid line: %s", line)
 
-			break
+		if len(lines) < minLineLength {
+			continue
 		}
 
 		stationName := lines[0]
 		temperature := lines[1]
 
-		_ = stationName
-		_ = temperature
+		stationTemperatures[stationName] = append(stationTemperatures[stationName], temperature)
 	}
+
+	return nil
 }
